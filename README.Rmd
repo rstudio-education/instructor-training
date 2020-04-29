@@ -21,11 +21,11 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 | Session | Topic             | Slides | Exercises |
 |---------|-------------------|:------:|:---------:|
 | 0       | Welcome           | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html) |  |
-| 1       | Design principles | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [`r emo::ji("writing_hand")`](/exercises/1-design-principles/) |
+| 1       | Design principles | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [`r emo::ji("writing_hand")`](https://github.com/rstudio-education/instructor-training/tree/master/exercises/1-design-principles/) |
 |         | Break             |        |           |
-| 2       | RStudio Cloud     | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/2-rstudio-cloud/2-rstudio-cloud.html) | [`r emo::ji("writing_hand")`](/exercises/2-rstudio-cloud/) |
+| 2       | RStudio Cloud     | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/2-rstudio-cloud/2-rstudio-cloud.html) | [`r emo::ji("writing_hand")`](https://github.com/rstudio-education/instructor-training/tree/master/exercises/2-rstudio-cloud) |
 |         | Break             |        |           |
-| 3       | Tidyverse         | [`r emo::ji("computer")`]((https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html)) | [`r emo::ji("writing_hand")`](/exercises/3-teach-tidyverse/) |
+| 3       | Tidyverse         | [`r emo::ji("computer")`]((https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html)) | [`r emo::ji("writing_hand")`](https://github.com/rstudio-education/instructor-training/tree/master/exercises/3-teach-tidyverse/) |
 |         | Q&A               |        |           |
 
 <br>
