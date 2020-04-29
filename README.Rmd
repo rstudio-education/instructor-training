@@ -16,8 +16,6 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 
 <br>
 
----
-
 ### Agenda
 
 | Session | Topic             | Slides | Exercises |
@@ -31,8 +29,6 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 |         | Q&A               |        |           |
 
 <br>
-
----
 
 ### Instructor
 

@@ -14,8 +14,6 @@ Program](https://education.rstudio.com/trainers).
 
 <br>
 
------
-
 ### Agenda
 
 | Session | Topic             |                                                      Slides                                                      |               Exercises               |
@@ -29,8 +27,6 @@ Program](https://education.rstudio.com/trainers).
 |         | Q\&A              |                                                                                                                  |                                       |
 
 <br>
-
------
 
 ### Instructor
 
