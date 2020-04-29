@@ -19,7 +19,7 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 | Session | Topic             | Slides | Exercises |
 |---------|-------------------|:------:|:---------:|
 | 0       | Welcome           | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html) |  |
-| 1       | Design principles | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | `r emo::ji("writing_hand")` |
+| 1       | Design principles | [`r emo::ji("computer")`](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [`r emo::ji("writing_hand")`](/exercises/1-design-principles/) |
 |         | Break             |        |           |
 | 2       | RStudio Cloud     | `r emo::ji("computer")` | `r emo::ji("writing_hand")` |
 |         | Break             |        |           |

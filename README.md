@@ -14,15 +14,15 @@ Program](https://education.rstudio.com/trainers).
 
 ### Agenda
 
-| Session | Topic             |                                                      Slides                                                      | Exercises |
-| ------- | ----------------- | :--------------------------------------------------------------------------------------------------------------: | :-------: |
-| 0       | Welcome           |           [💻](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html)           |           |
-| 1       | Design principles | [💻](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) |    ✍️     |
-|         | Break             |                                                                                                                  |           |
-| 2       | RStudio Cloud     |                                                        💻                                                         |    ✍️     |
-|         | Break             |                                                                                                                  |           |
-| 3       | Tidyverse         |                                                        💻                                                         |    ✍️     |
-|         | Q\&A              |                                                                                                                  |           |
+| Session | Topic             |                                                      Slides                                                      |               Exercises               |
+| ------- | ----------------- | :--------------------------------------------------------------------------------------------------------------: | :-----------------------------------: |
+| 0       | Welcome           |           [💻](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html)           |                                       |
+| 1       | Design principles | [💻](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [✍️](/exercises/1-design-principles/) |
+|         | Break             |                                                                                                                  |                                       |
+| 2       | RStudio Cloud     |                                                        💻                                                         |                  ✍️                   |
+|         | Break             |                                                                                                                  |                                       |
+| 3       | Tidyverse         |                                                        💻                                                         |                  ✍️                   |
+|         | Q\&A              |                                                                                                                  |                                       |
 
 <br>
 
