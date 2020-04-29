@@ -69,6 +69,7 @@ h1, h2, h3 {
 
 /* Font sizes */
 .larger { font-size: 400% }
+.bitlarger { font-size: 200% }
 .large { font-size: 130% }
 .midi { font-size: 85% }
 .small { font-size: 70% }
