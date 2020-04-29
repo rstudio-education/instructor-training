@@ -1039,14 +1039,9 @@ Do it all in R!
 
 ---
 
-.your-turn[
+.take-home[
 - Go to RStudio Cloud ([rstd.io/rit-cloud](https://rstd.io/rit-cloud)) > **1 - Design Principles** > `start-with-cake.Rmd`.
 - Challenge: Go from zero to data visualisation in 15 minutes of your first class. Assume students have successfully landed in RStudio Cloud like you did earlier. Design an exercise for them to "create" their first visualisation.
 - Need inspiration? Use the `ggplot2::diamonds` or `dplyr::starwars` dataset or any dataset from `nycflights13` or `gapminder` packages.
 - Already have a first day exercise you like? You're welcomed to modify it to fit the challenge.
-- Compare notes with others in breakout group. 
 ]
-
-```{r echo=FALSE}
-countdown(minutes = 15)
-```

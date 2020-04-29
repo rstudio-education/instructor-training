@@ -192,7 +192,7 @@ ul{
 
 
 /* Custom boxes */
-.discussion, .your-turn, .alert {
+.discussion, .your-turn, .alert, .take-home {
   padding: 5px 5px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -217,6 +217,17 @@ ul{
   font-size: 150%;
   font-weight: bold;
   color: var(--stucco);
+  margin-bottom: 10px;
+}
+.take-home {
+  border-left: solid 5px var(--opal-gray);
+  background-color: var(--opal-gray-30);
+}
+.take-home:before{
+  content: "Take home";
+  font-size: 150%;
+  font-weight: bold;
+  color: var(--monument);
   margin-bottom: 10px;
 }
 .alert {
