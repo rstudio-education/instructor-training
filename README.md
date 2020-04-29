@@ -23,7 +23,7 @@ Program](https://education.rstudio.com/trainers).
 |         | Break             |                                                                                                                  |                                                                                                           |
 | 2       | RStudio Cloud     |     [💻](https://rstudio-education.github.io/instructor-training/slides/2-rstudio-cloud/2-rstudio-cloud.html)     |   [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/2-rstudio-cloud)    |
 |         | Break             |                                                                                                                  |                                                                                                           |
-| 3       | Tidyverse         | [💻](\(https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html\)) |  [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/3-teach-tidyverse/)  |
+| 3       | Tidyverse         |   [💻](https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html)   |  [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/3-teach-tidyverse/)  |
 |         | Q\&A              |                                                                                                                  |                                                                                                           |
 
 <br>
