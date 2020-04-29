@@ -1,0 +1,52 @@
+---
+title: "> 0 <br> > welcome"
+subtitle: "`r emo::ji('partying')` let's get this party started! <br> `r emo::ji('link')` [INSERT LINK](INSERT LINK)"
+author: "dr. mine çetinkaya-rundel"
+date: "29 april 2020"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["../xaringan-themer.css", "../slides-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+---
+
+```{r child = "../setup.Rmd"}
+```
+
+
+## Meet & greet
+
+<br><br>
+
+### Mine Çetinkaya-Rundel
+
+- Professional Educator & Data Scientist, RStudio
+- Senior Lecturer, University of Edinburgh
+- Associate Professor of the Practice, Duke Statistical Science 
+
+---
+
+## Asking for help
+
+- "Raise hand" when we're altogether
+- Ping me in breakout sessions
+
+---
+
+## Agenda for today
+
+- Session 1: Curriculum design
+- 10 minute break
+- Session 2: Computing infrastructure with RStudio Cloud
+- 10 minute break
+- Session 3: Teaching the tidyverse
+- Q&A
