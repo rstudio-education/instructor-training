@@ -4,6 +4,8 @@
 Part 3 of the [RStudio Instructor Training and Certification
 Program](https://education.rstudio.com/trainers).
 
+-----
+
 ### Important links
 
 🏠 [rstd.io/rit](https://rstd.io/rit)
@@ -11,6 +13,8 @@ Program](https://education.rstudio.com/trainers).
 ☁️ [rstd.io/rit-cloud](https://rstd.io/rit-cloud)
 
 <br>
+
+-----
 
 ### Agenda
 
@@ -25,6 +29,8 @@ Program](https://education.rstudio.com/trainers).
 |         | Q\&A              |                                                                                                                  |                                       |
 
 <br>
+
+-----
 
 ### Instructor
 
