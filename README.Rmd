@@ -1,0 +1,20 @@
+---
+output: github_document
+---
+
+# Teaching R and Data Science with RStudio 
+
+## RStudio Instructor Training - Part 3
+
+### Important links
+
+### Agenda
+
+| Session | Topic             | Slides | Exercises |
+|---------|-------------------|:------:|:---------:|
+| 0       | Welcome           | `r emo::ji("computer")` |  |
+| 1       | Design principles | `r emo::ji("computer")` | `r emo::ji("writing_hand")` |
+|         | Break             |        |           |
+| 2       | RStudio Cloud     | `r emo::ji("computer")` | `r emo::ji("writing_hand")` |
+|         | Break             |        |           |
+| 3       | Tidyverse         | `r emo::ji("computer")` | `r emo::ji("writing_hand")` |
