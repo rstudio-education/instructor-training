@@ -24,6 +24,7 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 | 2       | RStudio Cloud     | `r emo::ji("computer")` | `r emo::ji("writing_hand")` |
 |         | Break             |        |           |
 | 3       | Tidyverse         | `r emo::ji("computer")` | `r emo::ji("writing_hand")` |
+|         | Q&A               |        |           |
 
 <br>
 

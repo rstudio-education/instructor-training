@@ -22,6 +22,7 @@ Program](https://education.rstudio.com/trainers).
 | 2       | RStudio Cloud     |                                                        💻                                                         |    ✍️     |
 |         | Break             |                                                                                                                  |           |
 | 3       | Tidyverse         |                                                        💻                                                         |    ✍️     |
+|         | Q\&A              |                                                                                                                  |           |
 
 <br>
 
