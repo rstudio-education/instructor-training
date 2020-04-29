@@ -23,9 +23,9 @@ Program](https://education.rstudio.com/trainers).
 | 0       | Welcome           |           [💻](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html)           |                                       |
 | 1       | Design principles | [💻](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [✍️](/exercises/1-design-principles/) |
 |         | Break             |                                                                                                                  |                                       |
-| 2       | RStudio Cloud     |                                                        💻                                                         |                  ✍️                   |
+| 2       | RStudio Cloud     |     [💻](https://rstudio-education.github.io/instructor-training/slides/2-rstudio-cloud/2-rstudio-cloud.html)     |   [✍️](/exercises/2-rstudio-cloud/)   |
 |         | Break             |                                                                                                                  |                                       |
-| 3       | Tidyverse         |                                                        💻                                                         |                  ✍️                   |
+| 3       | Tidyverse         | [💻](\(https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html\)) |  [✍️](/exercises/3-teach-tidyverse/)  |
 |         | Q\&A              |                                                                                                                  |                                       |
 
 <br>
