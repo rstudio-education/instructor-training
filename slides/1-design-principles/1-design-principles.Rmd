@@ -1,8 +1,7 @@
 ---
 title: "> 1 <br> > design principles"
-subtitle: "`r emo::ji('cake')` start with cake! <br> `r emo::ji('link')` [INSERT LINK](INSERT LINK)"
+subtitle: "`r emo::ji('cake')` start with cake! <br> `r emo::ji('link')` [rstd.io/rit](http://rstd.io/rit)"
 author: "dr. mine çetinkaya-rundel"
-date: "29 april 2020"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -1044,4 +1043,5 @@ Do it all in R!
 - Challenge: Go from zero to data visualisation in 15 minutes of your first class. Assume students have successfully landed in RStudio Cloud like you did earlier. Design an exercise for them to "create" their first visualisation.
 - Need inspiration? Use the `ggplot2::diamonds` or `dplyr::starwars` dataset or any dataset from `nycflights13` or `gapminder` packages.
 - Already have a first day exercise you like? You're welcomed to modify it to fit the challenge.
+- Remember: Faded examples!
 ]
