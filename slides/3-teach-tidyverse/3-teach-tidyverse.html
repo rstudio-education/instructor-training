@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>&gt; 3   &gt; teaching the tidyverse</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="dr. mine çetinkaya-rundel" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="../xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="../slides-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# &gt; 3 <br> &gt; teaching the tidyverse
+## 🧹 tidy up your teaching! <br> 🔗 <a href="https://rit">rstd.io/rit</a>
+### dr. mine çetinkaya-rundel
+
+---
+
+
+
+
+
+layout: true
+  
+&lt;div class="my-footer"&gt;
+&lt;span&gt;
+Dr. Mine Çetinkaya-Rundel - &lt;a href="https://rstd.io/rit" target="_blank"&gt;rstd.io/rit&lt;/a&gt;
+&lt;/span&gt;
+&lt;/div&gt; 
+
+---
+
+
+
+class: middle, inverse
+
+# What, why, how?
+
+---
+
+class: middle
+
+.pull-left[
+  .huge-gray[What]
+]
+.pull-right[
+  .larger[
+  &amp;nbsp;        
+  tidyverse
+  ]
+]
+
+---
+
+## What is the tidyverse?
+
+The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+- **ggplot2** - data visualisation
+- **dplyr** - data manipulation
+- **tidyr** - tidy data
+- **readr** - read rectangular data
+- **purrr** - functional programming
+- **tibble** - modern data frames
+- **stringr** - string manipulation
+- **forcats** - factors
+
+---
+
+## Tidyverse references
+
+.pull-left[
+&lt;img src="img/tidy-papers.png" width="458" /&gt;
+]
+.pull-right[
+- Wickham, H. (2014). **Tidy data.** Journal of Statistical Software, 59(10), 1-23.
+- Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François, R., ... &amp; Kuhn, M. (2019). **Welcome to the Tidyverse.** Journal of Open Source Software, 4(43), 1686.
+]
+
+---
+
+class: middle
+
+.pull-left[
+  .huge-gray[Why]
+]
+.pull-right[
+  .larger[
+  &amp;nbsp;        
+  tidyverse
+  ]
+]
+
+---
+
+## Recoding a binary variable
+
+.pull-left[
+### Base R
+
+```r
+mtcars$transmission &lt;-
+  ifelse(mtcars$am == 0,
+         "automatic",
+         "manual")
+```
+]
+.pull-right[
+### Tidyverse
+
+```r
+mtcars &lt;- mtcars %&gt;%
+  mutate(
+    transmission =
+      case_when(
+    am == 0 ~ "automatic",
+    am == 1 ~ "manual"
+    )
+  )
+```
+]
+---
+
+## Recoding a multi-level variable
+
+.pull-left[
+### Base R
+
+```r
+mtcars$gear_char &lt;-
+  ifelse(mtcars$gear == 3,
+    "three",
+    ifelse(mtcars$gear == 4,
+      "four",
+      "five"))
+```
+]
+.pull-right[
+### Tidyverse
+
+```r
+mtcars &lt;- mtcars %&gt;%
+  mutate(
+    gear_char =
+      case_when(
+    gear == 3 ~ "three",
+    gear == 4 ~ "four",
+    gear == 5 ~ "five"
+    )
+  )
+```
+]
+
+---
+
+## Visualising multiple variables
+
+### Base R
+
+.small[
+
+```r
+mtcars$trans_color &lt;- ifelse(mtcars$transmission == "automatic", "green", "blue")
+par(mar = c(2.5, 2.5, 0, 0), mgp = c(1.5, 0.5, 0))
+plot(mtcars$mpg ~ mtcars$disp, col = mtcars$trans_color)
+legend("topright", legend = c("automatic", "manual"),
+       pch = 1, col = c("green", "blue"))
+```
+
+![](3-teach-tidyverse_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+]
+
+---
+
+## Visualising multiple variables
+
+### Tidyverse
+
+
+```r
+ggplot(mtcars,
+       aes(x = disp, y = mpg, color = transmission)) +
+  geom_point()
+```
+
+![](3-teach-tidyverse_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
+---
+
+## Visualising even more variables
+
+### Base R
+
+.small[
+
+```r
+mtcars_cyl4 = mtcars[mtcars$cyl == 4, ]
+mtcars_cyl6 = mtcars[mtcars$cyl == 6, ]
+mtcars_cyl8 = mtcars[mtcars$cyl == 8, ]
+par(mfrow = c(1, 3), mar = c(2.5, 2.5, 2, 0), mgp = c(1.5, 0.5, 0))
+plot(mpg ~ disp, data = mtcars_cyl4, col = trans_color, main = "Cyl 4")
+plot(mpg ~ disp, data = mtcars_cyl6, col = trans_color, main = "Cyl 6")
+plot(mpg ~ disp, data = mtcars_cyl8, col = trans_color, main = "Cyl 8")
+legend("topright", legend = c("automatic", "manual"),
+       pch = 1, col = c("green", "blue"))
+```
+
+![](3-teach-tidyverse_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+]
+
+---
+
+## Visualising even more variables
+
+### Tidyverse
+
+
+```r
+ggplot(mtcars,
+       aes(x = disp, y = mpg, color = transmission)) +
+  geom_point() +
+  facet_wrap(~ cyl)
+```
+
+![](3-teach-tidyverse_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+
+## Benefits of starting with the tidyverse
+
+- (Closer to) human readable
+- Consistent syntax
+- Ease of multivariate visualizations
+- Growth opportunities:
+  - dplyr -&gt; SQL
+  - purrr -&gt; functional programming
+
+---
+
+class: middle
+
+.pull-left[
+  .huge-gray[How]
+]
+.pull-right[
+  .larger[
+  &amp;nbsp;        
+  tidyverse
+  ]
+]
+
+---
+
+.discussion[
+How do you start your lessons? Why?
+- `library(tidyverse)` 
+- `library(ggplot2)`, `library(dplyr)`, etc.
+]
+
+---
+
+### .pink[ Sample slide ]
+
+## ggplot2 `\(\in\)` tidyverse
+
+.pull-left[
+&lt;img src="img/ggplot2-part-of-tidyverse.png" width="80%" /&gt;
+]
+.pull-right[
+- **ggplot2** is tidyverse's data visualization package
+- The `gg` in "ggplot2" stands for Grammar of Graphics
+- It is inspired by the book **Grammar of Graphics** by Leland Wilkinson
+]
+
+---
+
+class: middle
+
+# Start with ggplot2
+
+---
+
+## Why start with ggplot2?
+
+1. Students come in with intuition for being able to interpret data visualizations without needing much instructions. 
+  - Focus the majority of class time initially on R syntax and leave interpretations to students. 
+  - Later on the scale tips -- spend more class time on concepts and results interpretations and less on R syntax.
+
+1. It can be easier for students to detect mistakes in visualisations compared to those in data wrangling or statistical modeling. 
+  
+---
+
+**Ex 1. It can be more difficult, especially for a new learner, to catch errors in data wrangling than in a data visualisation.**
+
+Suppose we want to find the average mileage of cars with more than 100 horsepower.
+
+- Left: Incorrect because `hp` is numeric, so no filtering is done, but also no error is given.
+- Right: Correct, and note that reported mean is different.
+
+.small[
+.pull-left[
+
+```r
+mtcars %&gt;%
+  filter(hp &gt; "100") %&gt;%
+  summarise(mean(mpg))
+```
+
+```
+##   mean(mpg)
+## 1  20.09062
+```
+]
+.pull-right[
+
+```r
+mtcars %&gt;%
+  filter(hp &gt; 100) %&gt;%
+  summarise(mean(mpg))
+```
+
+```
+##   mean(mpg)
+## 1  17.45217
+```
+]
+]
+
+---
+
+**Ex 2. It can be difficult to catch modeling errors, again especially for new learners.** 
+
+Fit a model predicting gas efficiency (`mpg`) from engine (`vs`, where `0` means V-shaped and `1` means straight). 
+- Left: Incorrect, fit model where `vs` numeric
+- Right: Correct, fit model where `vs` factor (categorical)
+- Note: Slope estimates same.
+
+.small[
+.pull-left[
+
+```r
+lm(mpg ~ vs, data = mtcars)
+```
+
+```
+##         term  estimate
+##  (Intercept) 16.616667
+##           vs  7.940476
+```
+]
+.pull-right[
+
+```r
+lm(mpg ~ as.factor(vs), data = mtcars)
+```
+
+```
+##            term  estimate
+##     (Intercept) 16.616667
+##  as.factor(vs)1  7.940476
+```
+]
+]
+
+---
+
+**Ex 2. Continued**
+
+Predict `mpg` from `gear` (the number of forward gears)
+
+- Note: slope estimates are different for numeric (left) vs. categorical (right) `gear`
+- Reason for difference may be obvious to someone who is already familiar with modeling and dummy variable encoding, but not to new learners
+
+.small[
+.pull-left[
+
+```r
+lm(mpg ~ gear, data = mtcars)
+```
+
+```
+##         term estimate
+##  (Intercept) 5.623333
+##         gear 3.923333
+```
+]
+.pull-right[
+
+```r
+lm(mpg ~ as.factor(gear), data = mtcars)
+```
+
+```
+##              term  estimate
+##       (Intercept) 16.106667
+##  as.factor(gear)4  8.426667
+##  as.factor(gear)5  5.273333
+```
+]
+]
+
+---
+
+.discussion[
+Do you start your teaching with data visualisation / ggplot2? 
+
+- If yes, do you have other reasons than the ones we listed?
+- If no, why not? Are you now convinced otherwise?
+]
+
+---
+
+class: middle, inverse
+
+# Teaching the tidyverse in 2020
+
+---
+
+class: middle
+
+# Reshaping data
+
+---
+
+## Instructional staff employment trends
+
+[This report](https://www.aaup.org/sites/default/files/files/AAUP_Report_InstrStaff-75-11_apr2013.pdf) by the American Association of University Professors (AAUP) provides the following dataset.
+
+.small[
+
+```r
+staff &lt;- read_csv("data/instructional-staff.csv")
+staff
+```
+
+```
+## # A tibble: 5 x 12
+##   faculty_type   `1975` `1989` `1993` `1995` `1999` `2001` `2003` `2005` `2007` `2009` `2011`
+##   &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Full-Time Ten…   29     27.6   25     24.8   21.8   20.3   19.3   17.8   17.2   16.8   16.7
+## 2 Full-Time Ten…   16.1   11.4   10.2    9.6    8.9    9.2    8.8    8.2    8      7.6    7.4
+## 3 Full-Time Non…   10.3   14.1   13.6   13.6   15.2   15.5   15     14.8   14.9   15.1   15.4
+## 4 Part-Time Fac…   24     30.4   33.1   33.2   35.5   36     37     39.3   40.5   41.1   41.3
+## 5 Graduate Stud…   20.5   16.5   18.1   18.8   18.7   19     20     19.9   19.5   19.4   19.3
+```
+]
+
+- Rows: Faculty types 
+- Columns: Years 
+- Values: Percentage of hires of that type of faculty for each year
+
+---
+
+.discussion[
+How can we recreate the following visualisation from these data?
+]
+
+![](3-teach-tidyverse_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+---
+
+.discussion[
+How would you approach this problem?
+
+- `gather()`/`spread()`
+- `pivot_wider()`/ `pivot_longer()`
+- Something else?
+]
+
+---
+
+class: center, middle
+
+&lt;img src="img/pivot.gif" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## `pivot_*()` functions
+
+![](img/tidyr-longer-wider.gif)&lt;!-- --&gt;
+
+---
+
+But before we do so... 
+
+**Question:** If the long data will have a row for each year/faculty type combination, and there are 5 faculty types and 11 years of data, how many rows will the data have?
+
+---
+
+## `pivot_longer()`
+
+
+```r
+pivot_longer(data, cols, 
+             names_to = "name", 
+             values_to = "value")
+```
+
+- The first argument is the `data` frame, as usual
+- The second argument, `cols`, is where you specify which columns to pivot into longer format 
+- The third argument, `names_to`, is a string specifying the name of the variable to create from column names of data
+- The fourth argument, `values_to`, is a string specifying the name of the variable to create from the data stored in cell values
+
+---
+
+.your-turn[
+- Go to RStudio Cloud &gt; 3 - Teach the Tidyverse &gt; `pivot.Rmd`.
+- Convert the data from wide format to long format.
+- **Stretch goal:** Convert the back to wide format from long format.
+]
+
+<div class="countdown" id="timer_5ea9a028" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+## Pivot staff data
+
+.small[
+
+```r
+staff %&gt;%
+  pivot_longer(cols = -faculty_type, 
+               names_to = "year", 
+               values_to = "percentage")
+```
+
+```
+## # A tibble: 55 x 3
+##    faculty_type              year  percentage
+##    &lt;chr&gt;                     &lt;chr&gt;      &lt;dbl&gt;
+##  1 Full-Time Tenured Faculty 1975        29  
+##  2 Full-Time Tenured Faculty 1989        27.6
+##  3 Full-Time Tenured Faculty 1993        25  
+##  4 Full-Time Tenured Faculty 1995        24.8
+##  5 Full-Time Tenured Faculty 1999        21.8
+##  6 Full-Time Tenured Faculty 2001        20.3
+##  7 Full-Time Tenured Faculty 2003        19.3
+##  8 Full-Time Tenured Faculty 2005        17.8
+##  9 Full-Time Tenured Faculty 2007        17.2
+## 10 Full-Time Tenured Faculty 2009        16.8
+## # … with 45 more rows
+```
+]
+
+---
+
+.midi[
+![](3-teach-tidyverse_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.small[
+
+```r
+staff %&gt;%
+  pivot_longer(cols = -faculty_type, 
+               names_to = "year", 
+               values_to = "percentage") %&gt;%
+  mutate(
+    year = as.numeric(year),
+    part_time = if_else(faculty_type == "Part-Time Faculty", "Part-Time Faculty", "Other Faculty")
+    ) %&gt;%
+  ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
+             color = part_time)) +
+  geom_line() +
+  scale_color_manual(values = c("gray", "red")) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  theme_minimal() +
+  labs(
+    title = "Instructional staff employment trends",
+    x = "Year",
+    y = "Percentage",
+    color = ""
+  ) +
+  theme(legend.position = "bottom")
+```
+]
+
+---
+
+class: middle
+
+# Columnwise operations
+
+---
+
+## Data
+
+Professor evaluations, from the **openintro** package
+
+.small[
+
+```r
+evals
+```
+
+```
+## # A tibble: 463 x 21
+##    score rank  ethnicity gender language   age cls_perc_eval cls_did_eval cls_students
+##    &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;         &lt;dbl&gt;        &lt;int&gt;        &lt;int&gt;
+##  1   4.7 tenu… minority  female english     36          55.8           24           43
+##  2   4.1 tenu… minority  female english     36          68.8           86          125
+##  3   3.9 tenu… minority  female english     36          60.8           76          125
+##  4   4.8 tenu… minority  female english     36          62.6           77          123
+##  5   4.6 tenu… not mino… male   english     59          85             17           20
+##  6   4.3 tenu… not mino… male   english     59          87.5           35           40
+##  7   2.8 tenu… not mino… male   english     59          88.6           39           44
+##  8   4.1 tenu… not mino… male   english     51         100             55           55
+##  9   3.4 tenu… not mino… male   english     51          56.9          111          195
+## 10   4.5 tenu… not mino… female english     40          87.0           40           46
+## # … with 453 more rows, and 12 more variables: cls_level &lt;fct&gt;, cls_profs &lt;fct&gt;,
+## #   cls_credits &lt;fct&gt;, bty_f1lower &lt;int&gt;, bty_f1upper &lt;int&gt;, bty_f2upper &lt;int&gt;,
+## #   bty_m1lower &lt;int&gt;, bty_m1upper &lt;int&gt;, bty_m2upper &lt;int&gt;, bty_avg &lt;dbl&gt;,
+## #   pic_outfit &lt;fct&gt;, pic_color &lt;fct&gt;
+```
+]
+
+---
+
+.your-turn[
+Convert all factor variables in `evals` to characters. Keep in mind that this should be introductory audience friendly, if possible. For any function you choose, think about how you would introduce it to your students.
+]
+
+<div class="countdown" id="timer_5ea9a0b8" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+## So long `mutate_*()`, hello `across()`
+
+- `across()` makes it easy to apply the same transformation to multiple columns, allowing you to use `select() `semantics inside in `summarise()` and `mutate()`
+- `across()` supersedes the family of *scoped variants* like `summarise_at()`, ``summarise_if()`, and `summarise_all()`
+- For now, you need the dev version of dplyr!
+
+
+```r
+install_github("tidyverse/dplyr")
+library(dplyr)
+```
+
+---
+
+## Convert all factors to characters
+
+.small[
+
+```r
+evals %&gt;%
+  mutate(across(is.factor, as.character))
+```
+
+```
+## # A tibble: 463 x 21
+##    score rank  ethnicity gender language   age cls_perc_eval cls_did_eval cls_students
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;         &lt;dbl&gt;        &lt;int&gt;        &lt;int&gt;
+##  1   4.7 tenu… minority  female english     36          55.8           24           43
+##  2   4.1 tenu… minority  female english     36          68.8           86          125
+##  3   3.9 tenu… minority  female english     36          60.8           76          125
+##  4   4.8 tenu… minority  female english     36          62.6           77          123
+##  5   4.6 tenu… not mino… male   english     59          85             17           20
+##  6   4.3 tenu… not mino… male   english     59          87.5           35           40
+##  7   2.8 tenu… not mino… male   english     59          88.6           39           44
+##  8   4.1 tenu… not mino… male   english     51         100             55           55
+##  9   3.4 tenu… not mino… male   english     51          56.9          111          195
+## 10   4.5 tenu… not mino… female english     40          87.0           40           46
+## # … with 453 more rows, and 12 more variables: cls_level &lt;chr&gt;, cls_profs &lt;chr&gt;,
+## #   cls_credits &lt;chr&gt;, bty_f1lower &lt;int&gt;, bty_f1upper &lt;int&gt;, bty_f2upper &lt;int&gt;,
+## #   bty_m1lower &lt;int&gt;, bty_m1upper &lt;int&gt;, bty_m2upper &lt;int&gt;, bty_avg &lt;dbl&gt;,
+## #   pic_outfit &lt;chr&gt;, pic_color &lt;chr&gt;
+```
+]
+
+---
+
+## Calculate means beauty score for each rank
+
+.small[
+
+```r
+evals %&gt;%
+  group_by(rank) %&gt;%
+  summarise(across(starts_with("bty"), mean, .names = "{col}_mean"))
+```
+
+```
+## # A tibble: 3 x 8
+##   rank  bty_f1lower_mean bty_f1upper_mean bty_f2upper_mean bty_m1lower_mean bty_m1upper_mean
+## * &lt;fct&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
+## 1 teac…             4.18             5.07             4.91             3.30             4.24
+## 2 tenu…             4.05             6.12             6                3.84             4.70
+## 3 tenu…             3.84             4.53             5                3.27             3.87
+## # … with 2 more variables: bty_m2upper_mean &lt;dbl&gt;, bty_avg_mean &lt;dbl&gt;
+```
+]
+
+---
+
+class: middle
+
+# Rowwise operations
+
+---
+
+## Rowwise operations
+
+- Lots of discussion around how to do these in the tidyverse, see [github.com/jennybc/row-oriented-workflows](https://github.com/jennybc/row-oriented-workflows) for in depth coverage
+
+- Sometimes you need to do a simple thing, e.g. taking average of repeated measures recorded in columns in a data frame
+
+.small[
+
+```r
+evals %&gt;% select(score, starts_with("bty_"))
+```
+
+```
+## # A tibble: 463 x 8
+##    score bty_f1lower bty_f1upper bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg
+##    &lt;dbl&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;
+##  1   4.7           5           7           6           2           4           6    5   
+##  2   4.1           5           7           6           2           4           6    5   
+##  3   3.9           5           7           6           2           4           6    5   
+##  4   4.8           5           7           6           2           4           6    5   
+##  5   4.6           4           4           2           2           3           3    3   
+##  6   4.3           4           4           2           2           3           3    3   
+##  7   2.8           4           4           2           2           3           3    3   
+##  8   4.1           5           2           5           2           3           3    3.33
+##  9   3.4           5           2           5           2           3           3    3.33
+## 10   4.5           2           5           4           3           3           2    3.17
+## # … with 453 more rows
+```
+]
+
+---
+
+## `rowwise()` is back, baby!
+
+Again, with the dev version of dplyr for now...
+
+.small[
+
+```r
+# install_github("tidyverse/dplyr")
+library(dplyr)
+evals %&gt;%
+  rowwise() %&gt;%
+  mutate(bty_avg = mean(c(bty_f1lower, bty_f1upper, bty_f2upper, bty_m1lower, bty_m1upper, bty_m2upper))) %&gt;%
+  ungroup() %&gt;%
+  select(starts_with("bty_"))
+```
+
+```
+## # A tibble: 463 x 7
+##    bty_f1lower bty_f1upper bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg
+##          &lt;int&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;
+##  1           5           7           6           2           4           6    5   
+##  2           5           7           6           2           4           6    5   
+##  3           5           7           6           2           4           6    5   
+##  4           5           7           6           2           4           6    5   
+##  5           4           4           2           2           3           3    3   
+##  6           4           4           2           2           3           3    3   
+##  7           4           4           2           2           3           3    3   
+##  8           5           2           5           2           3           3    3.33
+##  9           5           2           5           2           3           3    3.33
+## 10           2           5           4           3           3           2    3.17
+## # … with 453 more rows
+```
+]
+
+---
+
+class: middle
+
+## When to purrr?
+
+---
+
+class: middle
+
+.discussion[
+How familiar are you with the **purrr** package? Do you teach it in your introductory data science courses? If yes, how much?
+]
+
+---
+
+## Ex 1. Flattening JSON files
+
+We have data on Lego sales and some information on the buyers in JSON format. We want to covert it into a tidy data frame.
+
+.small[
+
+```
+## [
+##   {
+##     "gender": ["Female"],
+##     "first_name": ["Kimberly"],
+##     "last_name": ["Beckstead"],
+##     "age": [24],
+##     "phone_number": ["216-555-2549"],
+##     "hobbies": ["Ultimate Disc", "Shopping"],
+##     "purchases": [
+##       {
+##         "SetID": [24701],
+##         "Number": ["76062"],
+##         "Theme": ["DC Comics Super Heroes"],
+##         "Subtheme": ["Mighty Micros"],
+##         "Year": [2016],
+##         "Name": ["Robin vs. Bane"],
+##         "Pieces": [77],
+##         "USPrice": [9.99],
+##         "ImageURL": ["http://images.brickset.com/sets/images/76062-1.jpg"],
+##         "Quantity": [1]
+##       }
+##     ]
+##   }
+## ]
+```
+]
+
+---
+
+## purrr solution
+
+
+```r
+sales %&gt;%
+  purrr::map_dfr(
+    function(l) {
+      purchases &lt;- purrr::map_dfr(l$purchases, ~.)
+      l$purchases &lt;- NULL
+      l$hobbies &lt;- list(l$hobbies)
+      cbind(as_tibble(l), purchases) %&gt;% as_tibble()
+    }
+  )
+```
+
+---
+
+## purrr answer
+
+
+```
+## # A tibble: 620 x 16
+##    gender first_name last_name   age phone_number hobbies SetID Number Theme Subtheme  Year
+##  * &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;
+##  1 Female Kimberly   Beckstead    24 216-555-2549 &lt;chr [… 24701 76062  DC C… "Mighty…  2016
+##  2 Male   Neel       Garvin       35 819-555-3189 &lt;chr [… 25626 70595  Ninj… "Rise o…  2016
+##  3 Male   Neel       Garvin       35 819-555-3189 &lt;chr [… 24665 21031  Arch… ""        2016
+##  4 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 24695 31048  Crea… ""        2016
+##  5 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 25626 70595  Ninj… "Rise o…  2016
+##  6 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 24721 10831  Duplo ""        2016
+##  7 Female Bryanna    Welsh        19 &lt;NA&gt;         &lt;chr [… 24797 75138  Star… "Episod…  2016
+##  8 Female Bryanna    Welsh        19 &lt;NA&gt;         &lt;chr [… 24701 76062  DC C… "Mighty…  2016
+##  9 Male   Caleb      Garcia-W…    37 907-555-9236 &lt;chr [… 24730 41115  Frie… ""        2016
+## 10 Male   Caleb      Garcia-W…    37 907-555-9236 &lt;chr [… 25611 21127  Mine… "Minifi…  2016
+## # … with 610 more rows, and 5 more variables: Name &lt;chr&gt;, Pieces &lt;int&gt;, USPrice &lt;dbl&gt;,
+## #   ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
+```
+
+---
+
+## tidyr solution
+
+
+```r
+sales %&gt;%
+  tibble(sales = .) %&gt;%
+  unnest_wider(sales) %&gt;%
+  unnest_longer(purchases) %&gt;%
+  unnest_wider(purchases)
+```
+
+---
+
+## tidyr solution - Step 1
+
+
+```r
+sales %&gt;%
+  tibble(sales = .)
+```
+
+```
+## # A tibble: 250 x 1
+##    sales           
+##    &lt;list&gt;          
+##  1 &lt;named list [7]&gt;
+##  2 &lt;named list [7]&gt;
+##  3 &lt;named list [6]&gt;
+##  4 &lt;named list [6]&gt;
+##  5 &lt;named list [7]&gt;
+##  6 &lt;named list [7]&gt;
+##  7 &lt;named list [7]&gt;
+##  8 &lt;named list [7]&gt;
+##  9 &lt;named list [7]&gt;
+## 10 &lt;named list [7]&gt;
+## # … with 240 more rows
+```
+
+---
+
+## tidyr solution - Step 2
+
+
+```r
+sales %&gt;%
+  tibble(sales = .) %&gt;%
+  unnest_wider(sales)
+```
+
+```
+## # A tibble: 250 x 7
+##    gender first_name last_name        age phone_number hobbies   purchases 
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;    &lt;list&gt;    
+##  1 Female Kimberly   Beckstead         24 216-555-2549 &lt;chr [2]&gt; &lt;list [1]&gt;
+##  2 Male   Neel       Garvin            35 819-555-3189 &lt;chr [2]&gt; &lt;list [2]&gt;
+##  3 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;list [3]&gt;
+##  4 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;chr [2]&gt; &lt;list [2]&gt;
+##  5 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;chr [3]&gt; &lt;list [2]&gt;
+##  6 Male   Chase      Fortenberry       19 205-555-3704 &lt;chr [2]&gt; &lt;list [2]&gt;
+##  7 Male   Kevin      Cruz              20 947-555-7946 &lt;chr [1]&gt; &lt;list [1]&gt;
+##  8 Male   Connor     Brown             36 516-555-4310 &lt;chr [1]&gt; &lt;list [3]&gt;
+##  9 Female Toni       Borison           40 284-555-4560 &lt;chr [2]&gt; &lt;list [2]&gt;
+## 10 Male   Daniel     Hurst             44 251-555-0845 &lt;chr [1]&gt; &lt;list [2]&gt;
+## # … with 240 more rows
+```
+
+---
+
+## tidyr solution - Step 3
+
+
+```r
+sales %&gt;%
+  tibble(sales = .) %&gt;%
+  unnest_wider(sales) %&gt;%
+  unnest_longer(purchases)
+```
+
+```
+## # A tibble: 620 x 7
+##    gender first_name last_name        age phone_number hobbies   purchases        
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;    &lt;list&gt;           
+##  1 Female Kimberly   Beckstead         24 216-555-2549 &lt;chr [2]&gt; &lt;named list [10]&gt;
+##  2 Male   Neel       Garvin            35 819-555-3189 &lt;chr [2]&gt; &lt;named list [10]&gt;
+##  3 Male   Neel       Garvin            35 819-555-3189 &lt;chr [2]&gt; &lt;named list [10]&gt;
+##  4 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;named list [10]&gt;
+##  5 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;named list [10]&gt;
+##  6 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;named list [10]&gt;
+##  7 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;chr [2]&gt; &lt;named list [10]&gt;
+##  8 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;chr [2]&gt; &lt;named list [10]&gt;
+##  9 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;chr [3]&gt; &lt;named list [10]&gt;
+## 10 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;chr [3]&gt; &lt;named list [10]&gt;
+## # … with 610 more rows
+```
+
+---
+
+## tidyr solution - Step 4
+
+
+```r
+sales %&gt;%
+  tibble(sales = .) %&gt;%
+  unnest_wider(sales) %&gt;%
+  unnest_longer(purchases) %&gt;%
+  unnest_wider(purchases)
+```
+
+```
+## # A tibble: 620 x 16
+##    gender first_name last_name   age phone_number hobbies SetID Number Theme Subtheme  Year
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;
+##  1 Female Kimberly   Beckstead    24 216-555-2549 &lt;chr [… 24701 76062  DC C… "Mighty…  2016
+##  2 Male   Neel       Garvin       35 819-555-3189 &lt;chr [… 25626 70595  Ninj… "Rise o…  2016
+##  3 Male   Neel       Garvin       35 819-555-3189 &lt;chr [… 24665 21031  Arch… ""        2016
+##  4 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 24695 31048  Crea… ""        2016
+##  5 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 25626 70595  Ninj… "Rise o…  2016
+##  6 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 24721 10831  Duplo ""        2016
+##  7 Female Bryanna    Welsh        19 &lt;NA&gt;         &lt;chr [… 24797 75138  Star… "Episod…  2016
+##  8 Female Bryanna    Welsh        19 &lt;NA&gt;         &lt;chr [… 24701 76062  DC C… "Mighty…  2016
+##  9 Male   Caleb      Garcia-W…    37 907-555-9236 &lt;chr [… 24730 41115  Frie… ""        2016
+## 10 Male   Caleb      Garcia-W…    37 907-555-9236 &lt;chr [… 25611 21127  Mine… "Minifi…  2016
+## # … with 610 more rows, and 5 more variables: Name &lt;chr&gt;, Pieces &lt;int&gt;, USPrice &lt;dbl&gt;,
+## #   ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
+```
+
+---
+
+## tidyr solution - Auto
+
+
+```r
+sales %&gt;%
+  tibble(sales = .) %&gt;%
+  unnest_auto(sales) %&gt;%
+  unnest_auto(purchases) %&gt;%
+  unnest_auto(purchases)
+```
+
+---
+
+## tidyr answer - Auto
+
+
+```
+## Using `unnest_wider(sales)`; elements have 6 names in common
+```
+
+```
+## Using `unnest_longer(purchases)`; no element has names
+```
+
+```
+## Using `unnest_wider(purchases)`; elements have 10 names in common
+```
+
+```
+## # A tibble: 620 x 16
+##    gender first_name last_name   age phone_number hobbies SetID Number Theme Subtheme  Year
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;
+##  1 Female Kimberly   Beckstead    24 216-555-2549 &lt;chr [… 24701 76062  DC C… "Mighty…  2016
+##  2 Male   Neel       Garvin       35 819-555-3189 &lt;chr [… 25626 70595  Ninj… "Rise o…  2016
+##  3 Male   Neel       Garvin       35 819-555-3189 &lt;chr [… 24665 21031  Arch… ""        2016
+##  4 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 24695 31048  Crea… ""        2016
+##  5 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 25626 70595  Ninj… "Rise o…  2016
+##  6 Female Chelsea    Bouchard     41 &lt;NA&gt;         &lt;chr [… 24721 10831  Duplo ""        2016
+##  7 Female Bryanna    Welsh        19 &lt;NA&gt;         &lt;chr [… 24797 75138  Star… "Episod…  2016
+##  8 Female Bryanna    Welsh        19 &lt;NA&gt;         &lt;chr [… 24701 76062  DC C… "Mighty…  2016
+##  9 Male   Caleb      Garcia-W…    37 907-555-9236 &lt;chr [… 24730 41115  Frie… ""        2016
+## 10 Male   Caleb      Garcia-W…    37 907-555-9236 &lt;chr [… 25611 21127  Mine… "Minifi…  2016
+## # … with 610 more rows, and 5 more variables: Name &lt;chr&gt;, Pieces &lt;int&gt;, USPrice &lt;dbl&gt;,
+## #   ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
+```
+
+---
+
+## Ex 2. Iteration
+
+Suppose you want to repeatedly run a function (e.g. calculate many confidence intervals).
+
+For simplicity, let's say
+
+
+```r
+foo &lt;- function(i){
+  tibble(
+    x = rnorm(1),
+    y = rnorm(1)
+  )
+}
+```
+
+---
+
+## purrr solution 
+
+
+```r
+map_dfr(1:5, foo)
+```
+
+```
+## # A tibble: 5 x 2
+##        x      y
+## *  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 -0.511 -0.911
+## 2 -0.837  2.42 
+## 3  0.134 -0.491
+## 4 -0.441  0.460
+## 5 -0.694 -1.45
+```
+
+---
+
+## dev-dplyr solution
+
+
+```r
+tibble(id = 1:5) %&gt;% 
+  group_by(id) %&gt;% 
+  summarise(foo())
+```
+
+```
+## # A tibble: 5 x 3
+##      id       x      y
+## * &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+## 1     1  0.575  -1.02 
+## 2     2 -0.0151 -0.936
+## 3     3  1.10   -0.476
+## 4     4 -0.709  -0.501
+## 5     5 -1.63   -1.17
+```
+
+---
+
+## Moral of the story
+
+- There are many ways of getting to the answer
+- Some likely need more scaffolding than others
+- It's worth considering how much of `purrr` fits into your introductory data science curriculum
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div>`"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
