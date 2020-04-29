@@ -12,7 +12,7 @@ install.packages("magick")
 install.packages("nycflights13")
 install.packages("rvest")
 install.packages("shiny")
-\install.packages("tidyverse")
+install.packages("tidyverse")
 install.packages("unvotes")
 
 devtools::install_github("gadenbuie/countdown")
