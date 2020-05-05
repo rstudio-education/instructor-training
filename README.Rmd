@@ -8,11 +8,9 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 
 ---
 
-### Important links
+### Important link
 
 `r emo::ji("house")` [rstd.io/rit](https://rstd.io/rit)  
-
-`r emo::ji("cloud")` [rstd.io/rit-cloud](https://rstd.io/rit-cloud)
 
 <br>
 

@@ -6,11 +6,9 @@ Program](https://education.rstudio.com/trainers).
 
 -----
 
-### Important links
+### Important link
 
 🏠 [rstd.io/rit](https://rstd.io/rit)
-
-☁️ [rstd.io/rit-cloud](https://rstd.io/rit-cloud)
 
 <br>
 
