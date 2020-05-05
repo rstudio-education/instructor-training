@@ -15,7 +15,7 @@ output:
         <div class="progress-bar-container">
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
           </div>
-        </div>`
+        </div>
 ---
 
 ```{r child = "../setup.Rmd"}
@@ -37,11 +37,8 @@ class: middle
 | Session | Topic             |
 |---------|-------------------|
 | 0       | Welcome           |
-| 1       | Design principles |
-|         | Break             |
-| 2       | RStudio Cloud     |
-|         | Break             |
-| 3       | Tidyverse         |
+| 1       | RStudio Cloud     |
+| 2       | Teaching the Tidyverse         |
 |         | Q&A               |
 
 ---

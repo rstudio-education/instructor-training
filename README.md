@@ -16,15 +16,12 @@ Program](https://education.rstudio.com/trainers).
 
 ### Agenda
 
-| Session | Topic             |                                                      Slides                                                      |                                                 Exercises                                                 |
-| ------- | ----------------- | :--------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
-| 0       | Welcome           |           [💻](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html)           |                                                                                                           |
-| 1       | Design principles | [💻](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/1-design-principles/) |
-|         | Break             |                                                                                                                  |                                                                                                           |
-| 2       | RStudio Cloud     |     [💻](https://rstudio-education.github.io/instructor-training/slides/2-rstudio-cloud/2-rstudio-cloud.html)     |   [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/2-rstudio-cloud)    |
-|         | Break             |                                                                                                                  |                                                                                                           |
-| 3       | Tidyverse         |   [💻](https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html)   |  [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/3-teach-tidyverse/)  |
-|         | Q\&A              |                                                                                                                  |                                                                                                           |
+| Session | Topic                  |                                                    Slides                                                    |
+| ------- | ---------------------- | :----------------------------------------------------------------------------------------------------------: |
+| 0       | Welcome                |         [💻](https://rstudio-education.github.io/instructor-training/slides/0-welcome/0-welcome.html)         |
+| 1       | RStudio Cloud          |   [💻](https://rstudio-education.github.io/instructor-training/slides/1-rstudio-cloud/1-rstudio-cloud.html)   |
+| 2       | Teaching the tidyverse | [💻](https://rstudio-education.github.io/instructor-training/slides/2-teach-tidyverse/2-teach-tidyverse.html) |
+|         | Q\&A                   |                                                                                                              |
 
 <br>
 
