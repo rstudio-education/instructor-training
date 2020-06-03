@@ -1,5 +1,5 @@
 ---
-title: "> 1 <br> > computing infrastructure"
+title: "> 2 <br> > computing infrastructure"
 subtitle: "`r emo::ji('dizzy')` with RStudio Cloud! <br> `r emo::ji('link')` [rstd.io/rit](https://rstd.io/rit)"
 author: "dr. mine çetinkaya-rundel"
 output:
