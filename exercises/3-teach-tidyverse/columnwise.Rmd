@@ -1,0 +1,23 @@
+---
+title: "Columnwise operations"
+subtitle: "RStudio Instructor Training"
+output: html_document
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(openintro)
+```
+
+Convert all factor variables in `evals` to characters. Keep in mind that this should be introductory audience friendly, if possible. For any function you choose, think about how you would introduce it to your students.
+
+```{r glimpse-data}
+glimpse(evals)
+```
+
+---
+
+```{r}
+# place code here...
+```
+

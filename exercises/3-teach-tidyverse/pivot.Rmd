@@ -1,0 +1,23 @@
+---
+title: "Pivot functions"
+subtitle: "RStudio Instructor Training"
+output: html_document
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+```
+
+- Convert the data from wide format to long format.
+- **Stretch goal:** Convert the back to wide format from long format.
+
+```{r}
+staff <- read_csv("data/instructional-staff.csv")
+staff
+```
+
+---
+
+```{r}
+# place code here...
+```
