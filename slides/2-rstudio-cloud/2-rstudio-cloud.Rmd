@@ -189,22 +189,18 @@ knitr::include_graphics("img/rstudio-cloud.png")
 
 ## Contexts
 
+- Shorter workshops: Likely no opportunity to communicate pre-workshop instructions, varied computing background and learning goals
+
 - Semester long courses
   - Intro data science / statistics: little to no background in stats, data science, programming
   - Upper level data science / statistics: Varied computing background and different computer setups
-  
-- Shorter workshops: Likely no opportunity to communicate pre-workshop instructions, varied computing background and learning goals
 
 ---
+
+## RStudio Cloud: First look
 
 ```{r echo=FALSE, out.width="90%", fig.align="center"}
 knitr::include_graphics("img/landing-1.png")
-```
-
----
-
-```{r echo=FALSE, out.width="90%", fig.align="center"}
-knitr::include_graphics("img/landing-2.png")
 ```
 
 ---
@@ -216,6 +212,14 @@ knitr::include_graphics("img/landing-2.png")
 - You can add a new workspace and control its permissions
 
 - Projects in either workspace can be public or private
+
+---
+
+## A framework for workspaces
+
+```{r echo=FALSE, out.width="90%", fig.align="center"}
+knitr::include_graphics("img/landing-2.png")
+```
 
 ---
 
@@ -256,6 +260,16 @@ knitr::include_graphics("img/new-project-git-local.png")
 ]
 
 Both options `clone` a Git repo
+
+---
+
+## Sharing options
+
+- Option 1: Share a single project
+
+- Option 2: Invite users to a workspace (presumably with many projects)
+
+---
 
 <!--------------------------------  -------------------------------->
 <!-- Single project -->
@@ -310,6 +324,25 @@ class: middle, center
 
 ---
 
+.your-turn[
+
+#### First you're the instructor:
+- Create a new project and give it a name.
+- Create a template R Markdown document in the project.
+- Change the access level of the project so others can see it as well.
+- Grab the project URL and share it with a group mate.
+
+#### Now you're the student: 
+Access your one of your group mates' project as if you're the student and they're the instructor.
+
+]
+
+```{r echo=FALSE}
+countdown(minutes = 10)
+```
+
+---
+
 ## Pros / cons: Sharing a single project
 
 .pull-left[
@@ -331,24 +364,13 @@ class: middle, center
 
 ---
 
-.your-turn[
+class:middle
 
-#### First you're the instructor:
-- Create a new project and give it a name.
-- Create a template R Markdown document in the project.
-- Change the access level of the project so others can see it as well.
-- Grab the project URL and share it with your partner.
-- Tip: You can create a short link for the URL at bitly.com.
-
-#### Now you're the student: 
-Access your partner's project as if you're the student  
-and they’re the instructor.
-
+.discussion[
+Any questions so far?
 ]
 
-```{r echo=FALSE}
-countdown(minutes = 10)
-```
+---
 
 <!--------------------------------  -------------------------------->
 <!-- Workspace -->
@@ -380,7 +402,7 @@ class: middle
 
 ---
 
-## Getting students into a workspace
+## Workspace membership
 
 ```{r echo=FALSE, fig.align="center", out.width="80%"}
 knitr::include_graphics("img/workspace-members.png")
@@ -388,7 +410,40 @@ knitr::include_graphics("img/workspace-members.png")
 
 ---
 
-## Getting students into a workspace
+## Role permissions
+
+<br>
+
+| role        | permission                                       | course role |
+|-------------|--------------------------------------------------|-------------|
+| admin       | manage users, view, edit and manage all projects | instructor  |
+| moderator   | view, edit and manage all projects               | TA          |
+| contributor | create, edit and manage their own projects       | student     |
+| viewer      | view projects shared with everyone               | auditor     |
+
+.right[ .large[ `r emo::ji("woman_teacher")`  ]  ]
+
+---
+
+## Other permissions
+
+#### Under the Members tab:
+
+.pull-left-narrow[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/permissions.png")
+```
+]
+.pull-right-wide[
+- By default, all permissions are turned off
+- Think carefully before checking these boxes
+]
+
+.right[ .large[ `r emo::ji("woman_teacher")`  ]  ]
+
+---
+
+## Options
 
 #### Under the Members tab:
 
@@ -407,34 +462,11 @@ knitr::include_graphics("img/workspace-access.png")
 
 ---
 
-## Permission levels
+## Inviting a student to a workspace
 
-<br>
-
-| role        | permission                                       | course role |
-|-------------|--------------------------------------------------|-------------|
-| admin       | manage users, view, edit and manage all projects | instructor  |
-| moderator   | view, edit and manage all projects               | TA          |
-| contributor | create, edit and manage their own projects       | student     |
-| viewer      | view projects shared with everyone               | auditor     |
-
-.right[ .large[ `r emo::ji("woman_teacher")`  ]  ]
-
----
-
-## Permissions
-
-#### Under the Members tab:
-
-.pull-left-narrow[
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/permissions.png")
+```{r echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/invite-to-workspace.png")
 ```
-]
-.pull-right-wide[
-- By default, all permissions are turned off
-- Think carefully before checking these boxes
-]
 
 .right[ .large[ `r emo::ji("woman_teacher")`  ]  ]
 
@@ -450,24 +482,6 @@ knitr::include_graphics("img/capacity.png")
 
 ---
 
-## Inviting a student to a workspace
-
-```{r echo=FALSE, out.width="80%", fig.align="center"}
-knitr::include_graphics("img/invite-to-workspace.png")
-```
-
-.right[ .large[ `r emo::ji("woman_teacher")`  ]  ]
-
----
-
-## Joining a workspace
-
-<iframe width="1200" height="500 src="https://www.youtube.com/embed/k_W1kS10rLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-.right[ .large[ `r emo::ji("woman_technologist")`  ]  ]
-
----
-
 .your-turn[
 
 #### You’re the instructor:
@@ -476,10 +490,10 @@ knitr::include_graphics("img/invite-to-workspace.png")
   - Tip: Check in with your group mates and use a different name.
 - Change the settings of your workspace to Shared.
 - Change the permissions of your workspace how you like.
-- Grab the sharing link for your workspace, and share with your partner.
+- Grab the sharing link for your workspace, and share with a group mate.
 
 #### Now you’re the student:
-- Join one of your group mates’s workspace.
+- Join one of your group mates’ workspace.
 
 ]
 
@@ -508,7 +522,7 @@ One of the most attractive features of RStudio Cloud!
 
 ## Setting up your base project
 
-<iframe width="1200" height="500 src="https://www.youtube.com/embed/Fz9UR6uxAG4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="896" height="504" src="https://www.youtube.com/embed/Fz9UR6uxAG4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 .right[ .large[ `r emo::ji("woman_teacher")`  ]  ]
 
@@ -517,7 +531,6 @@ One of the most attractive features of RStudio Cloud!
 .your-turn[
 
 #### You’re the instructor:
-
 - Add a base project to **YOUR** workspace:
   - Install one or two of your favourite packages.
   - Start an R Markdown document so necessary packages get installed.
@@ -532,7 +545,7 @@ One of the most attractive features of RStudio Cloud!
 ]
 
 ```{r echo=FALSE}
-countdown(minutes = 10)
+countdown(minutes = 10, top = "0")
 ```
 
 ---
@@ -725,6 +738,8 @@ knitr::include_graphics("img/free-lunch.png")
 
 ---
 
+class: middle
+
 .discussion[
-What aspect of your teaching would using RStudio Cloud improve? Do you have any pedagogical or other concerns about teaching with RStudio Cloud?
+What aspect of your teaching would using RStudio Cloud improve? Do you have any pedagogical or other concerns about teaching with RStudio Cloud? Any other questions?
 ]
