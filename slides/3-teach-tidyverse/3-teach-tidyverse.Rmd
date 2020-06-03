@@ -1,5 +1,5 @@
 ---
-title: "> 2 <br> > teaching the tidyverse"
+title: "> 3 <br> > teaching the tidyverse"
 subtitle: "`r emo::ji('broom')` tidy up your teaching! <br> `r emo::ji('link')` [rstd.io/rit](https://rit)"
 author: "dr. mine çetinkaya-rundel"
 output:
@@ -234,6 +234,8 @@ class: middle
 
 ---
 
+class:middle
+
 .discussion[
 How do you start your lessons? Why?
 - `library(tidyverse)` 
@@ -373,6 +375,8 @@ tidy(m_mul_fac) %>%
 
 ---
 
+class:middle
+
 .discussion[
 Do you start your teaching with data visualisation / ggplot2? 
 
@@ -411,6 +415,8 @@ staff
 
 ---
 
+class:middle
+
 .discussion[
 How can we recreate the following visualisation from these data?
 ]
@@ -425,9 +431,9 @@ staff %>%
     part_time = if_else(faculty_type == "Part-Time Faculty", "Part-Time Faculty", "Other Faculty")
     ) %>%
   ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
-             color = part_time)) +
+             color = fct_rev(part_time))) +
   geom_line() +
-  scale_color_manual(values = c("gray", "red")) +
+  scale_color_manual(values = c("red", "gray")) +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
   theme_minimal() +
   labs(
@@ -440,6 +446,8 @@ staff %>%
 ```
 
 ---
+
+class:middle
 
 .discussion[
 How would you approach this problem?
@@ -483,8 +491,20 @@ pivot_longer(data, cols,
 
 - The first argument is the `data` frame, as usual
 - The second argument, `cols`, is where you specify which columns to pivot into longer format 
-- The third argument, `names_to`, is a string specifying the name of the variable to create from column names of data
-- The fourth argument, `values_to`, is a string specifying the name of the variable to create from the data stored in cell values
+- The third argument, `names_to`, is a string specifying the name of the variable to create from column names of the original data
+- The fourth argument, `values_to`, is a string specifying the name of the variable to create from the data stored in the cells of the original data
+
+---
+
+.your-turn[
+- Go to RStudio Cloud > 3 - Teach the Tidyverse > `pivot.Rmd`.
+- Convert the data from wide format to long format.
+- **Stretch goal:** Convert the back to wide format from long format.
+]
+
+```{r echo=FALSE}
+countdown(minutes = 5)
+```
 
 ---
 
@@ -502,7 +522,7 @@ staff %>%
 ---
 
 .midi[
-```{r echo=FALSE}
+```{r staff-plot, echo=FALSE}
 staff %>%
   pivot_longer(cols = -faculty_type, 
                names_to = "year", 
@@ -512,9 +532,9 @@ staff %>%
     part_time = if_else(faculty_type == "Part-Time Faculty", "Part-Time Faculty", "Other Faculty")
     ) %>%
   ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
-             color = part_time)) +
+             color = fct_rev(part_time))) +
   geom_line() +
-  scale_color_manual(values = c("gray", "red")) +
+  scale_color_manual(values = c("red", "gray")) +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
   theme_minimal() +
   labs(
@@ -530,28 +550,7 @@ staff %>%
 ---
 
 .small[
-```{r eval=FALSE}
-staff %>%
-  pivot_longer(cols = -faculty_type, 
-               names_to = "year", 
-               values_to = "percentage") %>%
-  mutate(
-    year = as.numeric(year),
-    part_time = if_else(faculty_type == "Part-Time Faculty", "Part-Time Faculty", "Other Faculty")
-    ) %>%
-  ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
-             color = part_time)) +
-  geom_line() +
-  scale_color_manual(values = c("gray", "red")) +
-  scale_y_continuous(labels = percent_format(accuracy = 1)) +
-  theme_minimal() +
-  labs(
-    title = "Instructional staff employment trends",
-    x = "Year",
-    y = "Percentage",
-    color = ""
-  ) +
-  theme(legend.position = "bottom")
+```{r ref.label = "staff-plot", eval=FALSE}
 ```
 ]
 
@@ -575,22 +574,54 @@ evals
 
 ---
 
+.your-turn[
+Convert all factor variables in `evals` to characters. Keep in mind that this should be introductory audience friendly, if possible. For any function you choose, think about how you would introduce it to your students.
+]
+
+```{r echo=FALSE}
+countdown(minutes = 5)
+```
+
+---
+
 ## So long `mutate_*()`, hello `across()`
 
 - `across()` makes it easy to apply the same transformation to multiple columns, allowing you to use `select() `semantics inside in `summarise()` and `mutate()`
 - `across()` supersedes the family of *scoped variants* like `summarise_at()`, ``summarise_if()`, and `summarise_all()`
-- For now, you need the dev version of dplyr!
+- This is the recommended approach in dplyr 1.0.0
 
-```{r eval=FALSE}
-install_github("tidyverse/dplyr")
-library(dplyr)
+---
+
+## Convert all factors to characters
+
+.small[
+```{r}
+evals %>%
+  mutate(across(where(is.factor), as.character))
 ```
+]
 
 ---
 
 ## Calculate means beauty score for each rank
 
-.small[
+.xsmall[
+```{r echo=FALSE}
+options(width=150)
+```
+
+```{r}
+evals %>%
+  group_by(rank) %>%
+  summarise(across(starts_with("bty"), mean))
+```
+]
+
+---
+
+## Rename columns as you calculate summaries
+
+.tiny[
 ```{r}
 evals %>%
   group_by(rank) %>%
@@ -612,7 +643,7 @@ class: middle
 
 - Sometimes you need to do a simple thing, e.g. taking average of repeated measures recorded in columns in a data frame
 
-.small[
+.xsmall[
 ```{r}
 evals %>% select(score, starts_with("bty_"))
 ```
@@ -626,7 +657,6 @@ Again, with the dev version of dplyr for now...
 
 .small[
 ```{r}
-# install_github("tidyverse/dplyr")
 library(dplyr)
 evals %>%
   rowwise() %>%
@@ -635,3 +665,147 @@ evals %>%
   select(starts_with("bty_"))
 ```
 ]
+
+---
+
+class: middle
+
+## When to purrr?
+
+---
+
+## Ex 1. Flattening JSON files
+
+We have data on Lego sales and some information on the buyers in JSON format. We want to covert it into a tidy data frame.
+
+.tiny[
+```{r echo=FALSE}
+sales <- read_rds("data/lego_sales.rds")
+toJSON(sales[1], pretty = TRUE)
+```
+]
+
+---
+
+## purrr solution
+
+.tiny[
+```{r eval=FALSE}
+sales %>%
+  purrr::map_dfr(
+    function(l) {
+      purchases <- purrr::map_dfr(l$purchases, ~.)
+      l$purchases <- NULL
+      l$hobbies <- list(l$hobbies)
+      cbind(as_tibble(l), purchases) %>% as_tibble()
+    }
+  )
+```
+]
+
+---
+
+## tidyr solution - Step 1
+
+.xsmall[
+```{r}
+sales %>%
+  tibble(sales = .)
+```
+]
+
+---
+
+## tidyr solution - Step 2
+
+.xsmall[
+```{r}
+sales %>%
+  tibble(sales = .) %>%
+  unnest_wider(sales)
+```
+]
+
+---
+
+## tidyr solution - Step 3
+
+.xsmall[
+```{r}
+sales %>%
+  tibble(sales = .) %>%
+  unnest_wider(sales) %>%
+  unnest_longer(purchases)
+```
+]
+
+---
+
+## tidyr solution - Step 4
+
+.xsmall[
+```{r}
+sales %>%
+  tibble(sales = .) %>%
+  unnest_wider(sales) %>%
+  unnest_longer(purchases) %>%
+  unnest_wider(purchases)
+```
+]
+
+---
+
+## tidyr solution - Auto
+
+.tiny[
+```{r}
+sales %>%
+  tibble(sales = .) %>%
+  unnest_auto(sales) %>%
+  unnest_auto(purchases) %>%
+  unnest_auto(purchases)
+```
+]
+
+---
+
+## Ex 2. Iteration
+
+Suppose you want to repeatedly apply a function that reports back two values (e.g. lower and upper bounds of confidence interval).
+
+For simplicity, let's say this function just randomly generates two values from the normal distribution.
+
+```{r}
+foo <- function(i){
+  tibble(
+    x = rnorm(1),
+    y = rnorm(1)
+  )
+}
+```
+
+---
+
+## purrr solution 
+
+```{r}
+map_dfr(1:5, foo)
+```
+
+---
+
+## dplyr 1.0.0 solution
+
+```{r}
+tibble(id = 1:5) %>% 
+  group_by(id) %>% 
+  summarise(foo())
+```
+
+---
+
+## Moral of the story
+
+- There are many ways of getting to the answer
+- Some likely need more scaffolding than others
+- It's worth considering how much of `purrr` fits into your introductory data science curriculum
