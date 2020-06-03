@@ -532,6 +532,8 @@ One of the most attractive features of RStudio Cloud!
 
 ---
 
+<!--
+
 .your-turn[
 
 #### You’re the instructor:
@@ -551,6 +553,8 @@ One of the most attractive features of RStudio Cloud!
 ```{r echo=FALSE}
 countdown(minutes = 10, top = "0")
 ```
+
+-->
 
 ---
 
