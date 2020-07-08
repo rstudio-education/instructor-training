@@ -62,6 +62,13 @@ h1, h2, h3 {
   margin-left: 5px;
 }
 
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
 /* Font colors */
 .pink {
   color: var(--peach-quartz);
@@ -78,50 +85,34 @@ h1, h2, h3 {
 
 /* Custom fonts */
 
-.huge-blue-number {
- font-family: 'Montserrat', sans-serif;
- font-size: 1700%;
- font-weight: bold;
- color: var(--provence);
-}
-.huge-pink-number {
- font-family: 'Montserrat', sans-serif;
- font-size: 1700%;
- font-weight: bold;
- color: var(--peach-quartz);
-}
-.huge-gray-number {
- font-family: 'Montserrat', sans-serif;
- font-size: 1700%;
- font-weight: bold;
- color: var(--monument);
-}
-.huge-gray {
+.huge-text {
  font-family: 'Montserrat', sans-serif;
  font-size: 600%;
  font-weight: bold;
- color: var(--monument);
+ color: var(--classic-blue);
+}
+.huge-number {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 1700%;
+ font-weight: bold;
+ color: var(--baby-blue);
 }
 
 /* Handwriting */
 .hand{
   font-family: 'Gochi Hand', cursive;
+  color: var(--classic-blue);
   font-size: 125%;
 }
-.hand-blue{
+.hand-large{
   font-family: 'Gochi Hand', cursive;
-  color: var(--provence);
-  font-size: 125%;
-}
-.hand-gray{
-  font-family: 'Gochi Hand', cursive;
-  color: var(--opal-gray);
-  font-size: 125%;
+  color: var(--classic-blue);
+  font-size: 500%;
 }
 
 /*Alternative two-column layouts*/
 
-  /*Left 70% - Right 30% */
+/*Left 70% - Right 30% */
 .pull-left-wide {
   width: 70%;
   float: left;
@@ -187,7 +178,7 @@ h1, h2, h3 {
 
 .remark-slide-number .progress-bar {
   height: 100%;
-  background-color: var(--monument);
+  background-color: var(--classic-blue);
 }
 
 /* Square bullets for lists */
@@ -198,7 +189,7 @@ ul{
 
 
 /* Custom boxes */
-.discussion, .your-turn, .alert, .take-home {
+.discussion, .your-turn, .take-home {
   padding: 5px 5px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -217,6 +208,7 @@ ul{
 .your-turn {
   border-left: solid 5px var(--cornhusk);
   background-color: var(--cornhusk-30);
+  font-size: 25px;
 }
 .your-turn:before{
   content: "Your turn!";

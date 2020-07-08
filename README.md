@@ -6,26 +6,14 @@ Program](https://education.rstudio.com/trainers).
 
 -----
 
-### Important link
+### Important links
 
 🏠 [rstd.io/rit](https://rstd.io/rit)
 
 ☁️ [rstd.io/rit-cloud](https://rstd.io/rit-cloud)
 
-<br>
-
-### Agenda
-
-| Session | Topic             |                                                      Slides                                                      |                                                 Exercises                                                 |
-| ------- | ----------------- | :--------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
-| 1       | Design principles | [💻](https://rstudio-education.github.io/instructor-training/slides/1-design-principles/1-design-principles.html) | [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/1-design-principles/) |
-|         | Break             |                                                                                                                  |                                                                                                           |
-| 2       | RStudio Cloud     |     [💻](https://rstudio-education.github.io/instructor-training/slides/2-rstudio-cloud/2-rstudio-cloud.html)     |                                                 In slides                                                 |
-|         | Break             |                                                                                                                  |                                                                                                           |
-| 3       | Tidyverse         |   [💻](https://rstudio-education.github.io/instructor-training/slides/3-teach-tidyverse/3-teach-tidyverse.html)   |  [✍️](https://github.com/rstudio-education/instructor-training/tree/master/exercises/3-teach-tidyverse/)  |
-|         | Q\&A              |                                                                                                                  |                                                                                                           |
-
-<br>
+💻
+[slides](https://rstudio-education.github.io/instructor-training/slides/rstudio-cloud.html)
 
 ### Instructor
 

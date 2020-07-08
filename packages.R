@@ -17,3 +17,4 @@ install.packages("unvotes")
 
 devtools::install_github("gadenbuie/countdown")
 devtools::install_github("OpenIntroStat/openintro-r-package")
+devtools::install_github("RamiKrispin/coronavirus")
