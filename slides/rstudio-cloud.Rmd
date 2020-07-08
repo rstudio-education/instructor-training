@@ -547,8 +547,6 @@ countdown(minutes = 15)
 
 `r emo::ji("grin")` Base project template can be used, so new project from Git also has the right packages installed!
 
-*More on this in Workshop 3 on 17 July!*
-
 ---
 
 ## Pros / cons: Sharing a workspace
