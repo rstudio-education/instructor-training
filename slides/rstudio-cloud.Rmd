@@ -354,15 +354,15 @@ class: middle
 
 .your-turn[
 
-`r emo::ji("woman_teacher")`: Identify one person in the group as **instructor** (Tip: Choose someone *without* a second / large display)  
-`r emo::ji("woman_technologist")`: Rest of the group are **students**
+`r emo::ji("woman_teacher")`: Identify one person in the breakout room as **instructor** (Tip: Choose someone *without* a second / large display)  
+`r emo::ji("woman_technologist")`: The other(s) are **students**
 
 #### `r emo::ji("woman_teacher")` Instructor:
 - Create a new project and give it a name
 - Install a package of your choice
 - Create a template R Markdown document in the project
 - Change the access level of the project so others can see it as well
-- Copy the project URL and share it with the rest of the group in the chat box
+- Copy the project URL and share it with the rest of the students(s) in the chat box
 
 #### `r emo::ji("woman_technologist")` Students: 
 Access your instructor's project and pick up where they left off
@@ -527,7 +527,7 @@ One of the most attractive features of RStudio Cloud!
   - Make this project visible to everyone
   - In the settings menu for the workspace, set it as base project
 - Create a new assignment: `Homework 01`.
-- Grab the sharing link for your workspace and share with your group.
+- Grab the sharing link for your workspace and share with your "student(s)".
 
 #### `r emo::ji("woman_technologist")` Students:
 - Join your instructor's workspace and start the assignment.
