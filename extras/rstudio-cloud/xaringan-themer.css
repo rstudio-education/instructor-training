@@ -43,19 +43,19 @@
 
   /* Colors */
   --text-color: #000000;
-  --header-color: #7A8387;
+  --header-color: #0F4C81;
   --background-color: #FFFFFF;
-  --link-color: #7A8387;
-  --text-bold-color: #7A8387;
+  --link-color: #0F4C81;
+  --text-bold-color: #0F4C81;
   --code-highlight-color: rgba(255,255,0,0.5);
   --inverse-text-color: #000000;
   --inverse-background-color: #B6CADA;
   --inverse-header-color: #000000;
-  --title-slide-background-color: #7A8387;
-  --title-slide-text-color: #000000;
-  --header-background-color: #7A8387;
+  --title-slide-background-color: #0F4C81;
+  --title-slide-text-color: #FFFFFF;
+  --header-background-color: #0F4C81;
   --header-background-text-color: #FFFFFF;
-  --primary: #7A8387;
+  --primary: #0F4C81;
   --secondary: #B6CADA;
   --white: #FFFFFF;
   --black: #000000;
@@ -99,10 +99,10 @@ h1, h2, h3 {
 }
 .remark-inline-code {
   font-size: var(--code-inline-font-size);
-  color: #7A8387;
+  color: #0F4C81;
 }
 .remark-slide-number {
-  color: #7A8387;
+  color: #0F4C81;
   opacity: 1;
   font-size: 0.9em;
 }
@@ -144,10 +144,10 @@ a, a > code {
   float: left;
 }
 .left-column h2, .left-column h3 {
-  color: #7A838799;
+  color: #0F4C8199;
 }
 .left-column h2:last-of-type, .left-column h3:last-child {
-  color: #7A8387;
+  color: #0F4C81;
 }
 .right-column {
   width: 75%;

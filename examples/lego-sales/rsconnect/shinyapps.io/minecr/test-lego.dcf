@@ -1,0 +1,10 @@
+name: test-lego
+title:
+username:
+account: minecr
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2557505
+bundleId: 3377496
+url: https://minecr.shinyapps.io/test-lego/
+when: 1594405834.59202

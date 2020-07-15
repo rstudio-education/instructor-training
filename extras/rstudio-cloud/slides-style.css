@@ -44,10 +44,6 @@
   color: var(--baby-blue);
 }
 
-a {
-  color: var(--baby-blue);
-}
-
 .title-slide h3 {
   text-align: right;
 }
@@ -93,7 +89,7 @@ h4 {
  font-family: 'Montserrat', sans-serif;
  font-size: 600%;
  font-weight: bold;
- color: var(--monument);
+ color: var(--classic-blue);
 }
 .huge-number {
  font-family: 'Montserrat', sans-serif;
@@ -105,12 +101,12 @@ h4 {
 /* Handwriting */
 .hand{
   font-family: 'Gochi Hand', cursive;
-  color: var(--monument);
+  color: var(--classic-blue);
   font-size: 125%;
 }
 .hand-large{
   font-family: 'Gochi Hand', cursive;
-  color: var(--monument);
+  color: var(--classic-blue);
   font-size: 500%;
 }
 
@@ -182,7 +178,7 @@ h4 {
 
 .remark-slide-number .progress-bar {
   height: 100%;
-  background-color: var(--monument);
+  background-color: var(--classic-blue);
 }
 
 /* Square bullets for lists */
@@ -268,39 +264,4 @@ div.my-footer a {
   bottom: 1em;
   padding-right: 4em;
   font-size: 70%;
-}
-
-/* Custom boxes */
-.sample-question, .sample-answer, .sample-feedback {
-  padding: 2px 2px;
-}
-.sample-question{
-  border-left: solid 5px var(--baby-blue);
-  background-color: var(--baby-blue-30);
-}
-.sample-question:before{
-  content: "Sample question:";
-  font-size: 100%;
-  font-weight: bold;
-  color: var(--monument);
-}
-.sample-answer {
-  border-left: solid 5px var(--cornhusk);
-  background-color: var(--cornhusk-30);
-}
-.sample-answer:before{
-  content: "Sample answer:";
-  font-size: 100%;
-  font-weight: bold;
-  color: var(--monument);
-}
-.sample-feedback {
-  border-left: solid 5px var(--monument);
-  background-color: var(--monument-30);
-}
-.sample-feedback:before{
-  content: "Sample feedback:";
-  font-size: 100%;
-  font-weight: bold;
-  color: var(--monument);
 }

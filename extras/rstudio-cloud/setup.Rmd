@@ -22,7 +22,7 @@ layout: true
   
 <div class="my-footer">
 <span>
-<a href="https://rstd.io/rit" target="_blank"><b>rstd.io/rit</b></a> - Dr. Mine Çetinkaya-Rundel
+Dr. Mine Çetinkaya-Rundel - <a href="https://rstd.io/rit" target="_blank">rstd.io/rit</a>
 </span>
 </div> 
 

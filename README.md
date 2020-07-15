@@ -10,7 +10,7 @@ Program](https://education.rstudio.com/trainers).
 
 ### 🏠 [rstd.io/rit](https://rstd.io/rit)
 
-### 💻 [slides](https://rstudio-education.github.io/instructor-training/slides/rstudio-cloud.html)
+### 💻 [slides](https://rstudio-education.github.io/instructor-training/slides/tutorial.html)
 
 ### ☁️ [rstd.io/rit-cloud](https://rstd.io/rit-cloud)
 

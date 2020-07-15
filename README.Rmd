@@ -12,7 +12,7 @@ Part 3 of the [RStudio Instructor Training and Certification Program](https://ed
 
 ### `r emo::ji("house")` [rstd.io/rit](https://rstd.io/rit) 
 
-### `r emo::ji("computer")` [slides](https://rstudio-education.github.io/instructor-training/slides/rstudio-cloud.html)
+### `r emo::ji("computer")` [slides](https://rstudio-education.github.io/instructor-training/slides/tutorial.html)
 
 ### `r emo::ji("cloud")` [rstd.io/rit-cloud](https://rstd.io/rit-cloud)
 

@@ -1,0 +1,138 @@
+---
+title: "Palmer penguins"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+# packages
+library(learnr)
+library(tidyverse)
+#devtools::install_github("rstudio-education/gradethis")
+library(gradethis)
+#devtools::install_github("rundel/learnrhash")
+library(learnrhash)
+library(palmerpenguins)
+
+# tutorial options
+tutorial_options(
+  # code running in exercise times out after 30 seconds
+  exercise.timelimit = 30, 
+  # use gradethis for checking
+  exercise.checker = gradethis::grade_learnr
+  )
+
+# hide non-exercise code chunks
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+**This is a demo tutorial created for the "Building interactive tutorials in R" workshop. See [here](http://bit.ly/teach-r-online-mats) for slides and full set of materials from the workshop series.**
+
+---
+
+## Introduction
+
+```{r stormtrooper, fig.margin = TRUE, echo = FALSE, fig.width=3, out.width = "100%", fig.cap="Illustration by Allison Horst."}
+knitr::include_graphics("images/lter_penguins.png")
+```
+
+Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). 
+
+The data are distributed in the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) package. 
+
+
+### Learning goals
+
+- Practice developing exercises with learnr.
+- Practice writing code checking tests with gradethis.
+
+### Getting help
+
+If you have any questions call for help in Zoom!
+
+### Packages
+
+In this assignment we will work with the **palmerpenguins** and **tidyverse** packages. So let's go ahead and load them!
+
+```{r load-package, exercise = TRUE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Multiple choice questions
+
+Modify the following question to:
+
+- Allow retry for incorrect answers
+- Display answers in a random order
+- Customise the message text for correct answer
+- Customise the message texts for incorrect answers (try giving different pieces of feedback for different incorrect answers)
+- Modify the penguin color question to allow multiple correct answers
+- Place the two questions in a `quiz()`
+
+```{r awesome-penguins}
+question(
+  "How awesome are penguins?",
+  answer("Super awesome!", correct = TRUE),
+  answer("Awesome"),
+  answer("Meh"),
+  answer("Not awesome"),
+  answer("Super not awesome")
+)
+```
+
+```{r penguin-colors}
+question(
+  "Penguins are which of the following colors?",
+  answer("Black", correct = TRUE),
+  answer("White"),
+  answer("Magenta"),
+  answer("Cyan")
+)
+```
+
+## Code exercises
+
+Create a frequency table of the species of penguins on Biscoe island, and display the results in descending order of frequency.
+
+Your task is to add more `fail_if()` statements to the code checking chunk to check for realistic mistakes students can make and give them informative feedback that will nudge them in the right direction.
+
+```{r penguins-count, exercise = TRUE}
+penguins %>%
+  filter(island __ "Biscoe") %>%
+  ___(___)
+```
+
+```{r penguins-count-hint-1}
+penguins %>%
+  filter(island == "Biscoe") %>%
+  count(___, ___)
+```
+
+```{r penguins-count-hint-2}
+Add a hint...
+```
+
+```{r penguins-count-solution}
+penguins %>%
+  filter(island == "Biscoe") %>%
+  count(species, sort = TRUE)
+```
+
+```{r penguins-count-check}
+grade_result(
+  pass_if(~ identical(as.numeric(.result[1,2]), 124), "In this dataset, the most common species of penguins on Biscoe island are Gentoo pengiuns."),
+  fail_if(~ identical(as.numeric(.result[1,2]), 123), "Checking for 123 doesn't make sense here, change this to some other realistic check."),
+  # add more fail_if() statements...
+  fail_if(~ TRUE, "Not quite! ___")
+)
+```
+
+
+
+
