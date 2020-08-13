@@ -508,9 +508,7 @@ countdown(minutes = 15)
 
 --
 
-- Currently (July 2020) learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result -- this should be fixed in the next learnr release [[PR]](https://github.com/rstudio/learnr/pull/373)
-
---
+- gradethis is not yet on CRAN, though it's quite stable at this point
 
 - If code in the exercise chunk is invalid, you might get the R error instead:
 
